@@ -37,6 +37,7 @@ export class HomeComponent {
   dataSource = ELEMENT_DATA;
 
   constructor(public dialog: MatDialog) {}
+  
 
   abrirCaixaDialogo(element: PeriodicElement | null): void{
     const dialogRef = this.dialog.open(ElementDialogComponent, {
@@ -55,6 +56,11 @@ export class HomeComponent {
         this.table.renderRows();
       }
     });
+  }
+
+  getAlertas(): void{
+    console.log("Vai aqui a lista de alertas");
+    
   }
 
   deleteElement(position : number | null):void{
