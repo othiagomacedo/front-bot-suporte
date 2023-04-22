@@ -1,0 +1,25 @@
+<mat-toolbar color="primary" class = "mat-toolbar">
+
+    <div class="opcao-menu">
+
+        <button mat-button [matMenuTriggerFor]="alertaMenu">Alertas</button>
+        <mat-menu #alertaMenu="matMenu" yPosition="above">
+            <button mat-menu-item>Listar e Editar</button>
+            <button mat-menu-item>Adicionar</button>
+        </mat-menu>
+
+    </div>
+
+</mat-toolbar>
+
+<!-- <mat-toolbar color="primary">
+    
+    <mat-toolbar-row>
+      <span>BotSuporte</span>
+      <span class="example-spacer"></span>
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </mat-toolbar-row>
+
+</mat-toolbar> -->
