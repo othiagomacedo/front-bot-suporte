@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
+import { Alerta } from '../../model/alerta';
+import {DataSource} from '@angular/cdk/collections';
+import {Observable, ReplaySubject} from 'rxjs';
 
 
 @Component({
@@ -17,49 +20,41 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
 
 export class HomeComponent {
   dataSource = ELEMENT_DATA;
-  columnsToDisplay = ['name', 'weight', 'symbol', 'position'];
+  columnsToDisplay = ['id', 'id_canal', 'cron','ativo'];
   columnsToDisplayWithExpand = [...this.columnsToDisplay, 'expand'];
-  expandedElement: PeriodicElement | null | undefined;
+  expandedElement: Alerta | null | undefined;
+
+  addData(){
+  
+  }
+
+  removeData(){
+
+  }
+
+  toggleCheckedState(item: any) {
+    item.isChecked = !item.isChecked;
+  }
 }
 
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  description: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
+const ELEMENT_DATA: Alerta[] = [
   {
-    position: 1,
-    name: 'Hydrogen',
-    weight: 1.0079,
-    description: `Hydrogen is a chemical element with symbol H and atomic number 1. With a standard
-        atomic weight of 1.008, hydrogen is the lightest element on the periodic table.`,
+    id: 1,
+    id_canal: 222,
+    mensagem: `apenas um teste de mensagem para Alerta, para aparecer num canal topster`,
+    cron : `0/10 * * * * ?`,  
+    ativo : `inativo`,
+    urlImagem : `url da imagem`
   },
   {
-    position: 2,
-    name: 'Helium',
-    weight: 4.0026,
-    description: `Helium is a chemical element with symbol He and atomic number 2. It is a
-        colorless, odorless, tasteless, non-toxic, inert, monatomic gas, the first in the noble gas
-        group in the periodic table. Its boiling point is the lowest among all the elements.`,
-  },
-  {
-    position: 3,
-    name: 'Lithium',
-    weight: 6.941,
-    description: `Lithium is a chemical element with symbol Li and atomic number 3. It is a soft,
-        silvery-white alkali metal. Under standard conditions, it is the lightest metal and the
-        lightest solid element.`,
-  },
-  {
-    position: 4,
-    name: 'Beryllium',
-    weight: 9.0122,
-    description: `Beryllium is a chemical element with symbol Be and atomic number 4. It is a
-        relatively rare element in the universe, usually occurring as a product of the spallation of
-        larger atomic nuclei that have collided with cosmic rays.`,
-  },
-
+    id: 2,
+    id_canal: 1231231,
+    mensagem: `outro texto alternativo para demonstrar uma mensagem de Alerta aqui`,
+    cron : `0/20 * * * * ?`,  
+    ativo : `inativo`,
+    urlImagem : `url da imagem`
+  }
+  
 ];
+
+
