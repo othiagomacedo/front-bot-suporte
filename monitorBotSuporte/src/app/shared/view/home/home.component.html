@@ -1,7 +1,30 @@
 <div class="all-itens">
 
 
-  <table mat-table [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z8">
+  <!-- Botoes topo de adição -->
+  <section>
+    <div class="example-button-row">
+      <!-- <a mat-raised-button href="https://www.google.com/" target="_blank">Link</a> -->
+      <button class="button-opcoes" mat-fab extended color="primary" (click)="abrirModalAlerta(null)">
+        <mat-icon>add</mat-icon>
+        Novo Alerta
+      </button>
+
+      <button class="button-opcoes" mat-fab extended color="primary">
+        <mat-icon>play_arrow</mat-icon>
+        Iniciar Todos
+      </button>
+
+      <button class="button-opcoes" mat-fab extended color="warn">
+        <mat-icon>stop</mat-icon>
+        Parar Todos
+      </button>
+
+    </div>
+  </section>
+
+
+  <table mat-table #tabelaAlertas [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z8">
 
     <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
       <th mat-header-cell *matHeaderCellDef> {{column}} </th>

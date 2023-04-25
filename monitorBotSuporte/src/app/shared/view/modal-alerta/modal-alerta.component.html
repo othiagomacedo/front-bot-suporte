@@ -1,0 +1,39 @@
+<h1 mat-dialog-title>Alerta</h1>
+
+<div mat-dialog-content>
+
+    <!-- campos dentro do modal -->
+
+    <!-- field Id canal -->
+  <mat-form-field appearance="fill">
+    <mat-label>Id Canal</mat-label>
+    <input matInput [(ngModel)]="data.id_canal">
+  </mat-form-field>
+
+  <!-- field Cron -->
+  <mat-form-field appearance="fill">
+    <mat-label>Cron</mat-label>
+    <input matInput [(ngModel)]="data.cron">
+  </mat-form-field>
+
+  <!-- field Ativo -->
+  <mat-form-field appearance="fill">
+    <mat-label>Ativo</mat-label>
+    <input matInput [(ngModel)]="data.ativo">
+  </mat-form-field>
+
+  <!-- field Mensagem -->
+  <mat-form-field appearance="fill">
+    <mat-label>Mensagem</mat-label>
+    <input matInput [(ngModel)]="data.mensagem">
+  </mat-form-field>
+
+  <!-- field Imagem - IMPLEMENTAR -->
+
+
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="cancelarAcao()">Cancelar</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>OK</button>
+</div>

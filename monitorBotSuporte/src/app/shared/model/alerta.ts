@@ -1,5 +1,5 @@
 export interface Alerta {
-  id: number;
+  id?: number;
   id_canal: number;
   mensagem: string;
   cron: string;
@@ -10,5 +10,5 @@ export interface Alerta {
   // cor_R : number;
   // cor_G : number;
   // cor_B : number;
-  urlImagem : string;
+  urlImagem? : string;
 }

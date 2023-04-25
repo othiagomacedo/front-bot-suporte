@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import { Alerta } from '../../model/alerta';
-import {DataSource} from '@angular/cdk/collections';
-import {Observable, ReplaySubject} from 'rxjs';
+import { ModalAlertaComponent } from '../modal-alerta/modal-alerta.component';
+import { MatDialog } from '@angular/material/dialog';
+import { MatTable } from '@angular/material/table';
+
 
 
 @Component({
@@ -19,13 +21,40 @@ import {Observable, ReplaySubject} from 'rxjs';
 })
 
 export class HomeComponent {
+
+  @ViewChild(MatTable)
+  tabelaAlertas!: MatTable<any>
   dataSource = ELEMENT_DATA;
   columnsToDisplay = ['id', 'id_canal', 'cron','ativo'];
   columnsToDisplayWithExpand = [...this.columnsToDisplay, 'expand'];
   expandedElement: Alerta | null | undefined;
 
+  constructor(public dialog: MatDialog) {}
+
   addData(){
-  
+    console.log("Botao de adicionar alerta clicado addData");
+  }
+
+  abrirModalAlerta(alerta: Alerta | null){
+    console.log("Botao de adicionar alerta clicado");
+    const dialogRef = this.dialog.open(ModalAlertaComponent, {
+      data: alerta === null ? {
+        id_canal:null,
+        cron:'',
+        ativo:'',
+        mensagem:'',
+        url_imagem:''
+      } : alerta
+
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      
+      if(result !== undefined){
+        this.dataSource.push(result);
+        this.tabelaAlertas.renderRows();
+      }
+    });
   }
 
   removeData(){
@@ -37,6 +66,8 @@ export class HomeComponent {
   }
 }
 
+
+// Origem da informação no monitor
 const ELEMENT_DATA: Alerta[] = [
   {
     id: 1,
