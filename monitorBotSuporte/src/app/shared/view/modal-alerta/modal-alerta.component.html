@@ -19,17 +19,20 @@
   <!-- field Ativo -->
   <mat-form-field appearance="fill">
     <mat-label>Ativo</mat-label>
+    <!-- <mat-slide-toggle></mat-slide-toggle> -->
     <input matInput [(ngModel)]="data.ativo">
   </mat-form-field>
 
   <!-- field Mensagem -->
   <mat-form-field appearance="fill">
     <mat-label>Mensagem</mat-label>
-    <input matInput [(ngModel)]="data.mensagem">
+    <textarea  matInput [(ngModel)]="data.mensagem"></textarea>
   </mat-form-field>
 
-  <!-- field Imagem - IMPLEMENTAR -->
 
+  <!-- field Imagem - IMPLEMENTAR -->
+  <input type="file" (change)="onFileSelected($event)">
+  
 
 </div>
 
